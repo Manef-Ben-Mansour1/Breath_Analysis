@@ -20,7 +20,7 @@ import shutil
 warnings.filterwarnings('ignore')
 
 app = Flask(__name__)
-CORS(app, origins=["*"], methods=["GET", "POST", "OPTIONS"])  # Enable CORS for React Native
+CORS(app, origins=["*"], allow_headers=["Content-Type", "Authorization", "Accept"], methods=["GET", "POST", "OPTIONS"],expose_headers=["Content-Type"])  # Enable CORS for React Native
 
 class AudioClassifier:
     def __init__(self, model_path="resnet_audio_classifier.h5", encoder_path="label_encoder.pkl"):
@@ -339,6 +339,7 @@ def health_check():
     if classifier is None:
         return jsonify({
             "status": "error",
+            'port': 5000,
             "message": "Classifier not initialized"
         }), 500
     
