@@ -498,7 +498,7 @@ def internal_error(e):
 if __name__ == '__main__':
     # Configuration
     HOST = '0.0.0.0'  # Listen on all interfaces
-    PORT = 5000
+    PORT = 5002
     DEBUG = True
     
     # Set maximum file size (16MB)

@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
 
 # Configure CORS
-CORS(app, supports_credentials=True, origins=["http://localhost:19006", "https://*.ngrok.io", "exp://*", "http://127.0.0.1:19006", "http://192.168.1.*:19006"])
+CORS(app, supports_credentials=True, origins=["*"], allow_headers=["Content-Type"], methods=["GET", "POST", "OPTIONS"])
 
 # Configure SQLite database
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -154,4 +154,4 @@ def profile():
     return jsonify({'message': 'Profile not found'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5001)
